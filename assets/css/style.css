@@ -1,101 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
 .parent {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    }
-    
-    .titulo { 
-        grid-area: 1 / 1 / 2 / 6; 
-        background-color: #6439FF;
-        text-align: center;
-        align-items: center;
-        padding-top: 1.5rem;
-        color: azure;
-    }
-
-    .agregar { 
-        grid-area: 2 / 1 / 3 / 6;
-        background-color: #4F75FF;
-        color: aliceblue;
-    }
-    .recuento { 
-        grid-area: 3 / 1 / 5 / 3;
-        background-color: #00CCDD;
-    }
-
-    .checkbox { 
-        grid-area: 3 / 4 / 5 / 5;
-        background-color: #00CCDD;
-    }
-
-    .footer {
-        grid-area: 5 / 1 / 5 / 7;
-        background-color: #6439FF;
-        color: aliceblue;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    h2 {
-        padding-left: 1rem;
-    }
-
-    label {
-        padding-left: 3px;
-    }
-
-    .id { 
-        grid-area: 3 / 3 / 5 / 4;
-        background-color: #7CF5FF;
-    }
-
-    .botonera { 
-        grid-area: 3 / 5 / 5 / 6;
-        background-color: #7CF5FF;
-        display: flex;
-        flex-direction: column;
-    }
-
-    #contenedorBotones {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin-top: 2.5rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-
-    #barraAgregar {
-        width: 75%;
-        margin-left: 4.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .titulo3 {
-        text-align: center;
-    }
-
-    .p {
-        display: flex;
-        gap: 1rem;
-        padding-top: 1rem;
-    }
-
-    .pContador {
-        margin-left: 2rem;
-    }
-
-    #contenedorCheckbox {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        padding-left: 3px;
-    }
-
-   .Id {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-    }
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.titulo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.agregar {
+    margin-bottom: 20px;
+}
+.recuento {
+    margin-bottom: 20px;
+}
+#contenedorTareas {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+}
+.tarea-item {
+    display: flex;
+    align-items: center; 
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+.tarea-item:last-child {
+    border-bottom: none;
+}
+.tarea-id {
+    width: 40px; 
+    text-align: center; 
+}
+.boton-eliminar {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px; 
+}
+.boton-eliminar:hover {
+    background-color: darkred;
+}
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d;
+}
+.checkbox-container {
+    display: flex; 
+    align-items: center; 
+    margin-left: auto; 
+}

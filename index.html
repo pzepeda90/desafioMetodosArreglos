@@ -27,7 +27,7 @@
         </div>
         <div class="agregar">
             <h2 class="titulo2">Nueva tarea</h2>
-            <input type="text" id="barraAgregar">
+            <input type="text" id="barraAgregar" placeholder="Agregar tarea...">
             <button id="botonAgregar">Agregar</button>
         </div>
         <div class="recuento">
@@ -39,121 +39,12 @@
                 <p class="pContador">Total: </p> <label id="totalTareas">0</label>
             </div>
         </div>
-        <div class="id">
-            <h3 class="titulo3">ID</h3>
-            <div id="contenedorId"></div>
-        </div>
-        <div class="checkbox">
-            <h3 class="titulo3">Tarea</h3>
-            <div id="contenedorCheckbox"></div>
-        </div>
-        <div class="botonera">
-            <h3 class="titulo3">Manejo</h3>
-            <div id="contenedorBotones">
-                <button id="botonEliminar">Eliminar</button>
-            </div>
+        <div id="contenedorTareas">
+            <!-- Contenedor para tareas dinámico -->
         </div>
         <div class="footer">Todolist</div>
     </div>
 
-    <script>
-        const barraAgregar = document.getElementById("barraAgregar");
-        const botonAgregar = document.getElementById("botonAgregar");
-        const botonEliminar = document.getElementById("botonEliminar");
-        const botonRealizado = document.getElementById("botonRealizado");
-
-        const labelElementosRealizados = document.getElementById("elementosRealizados");
-        const labelTotalTareas = document.getElementById("totalTareas");
-
-        let tareas = [
-            { id: 1, descripcion: 'Llamar al banco', estado: false },
-            { id: 2, descripcion: 'Comprar regalo', estado: false },
-            { id: 3, descripcion: 'Estudiar APIs', estado: false },
-            { id: 4, descripcion: 'Hacer ejercicio', estado: false }
-        ];
-
-        // Crear listas HTML  
-        const listaId = document.createElement('ul');
-        const listaCheckbox = document.createElement('ul');
-
-        function actualizarRecuento() {
-            const realizadas = tareas.filter(tarea => tarea.estado).length;
-            const total = tareas.length;
-
-            labelElementosRealizados.textContent = realizadas;
-            labelTotalTareas.textContent = total;
-        }
-
-        function renderTareas() {
-            // Limpiar el contenedor antes de volver a renderizar
-            document.getElementById("contenedorId").innerHTML = '';
-            document.getElementById("contenedorCheckbox").innerHTML = '';
-            listaId.innerHTML = ''; // Limpiar la lista
-            listaCheckbox.innerHTML = ''; // Limpiar la lista
-
-            for (const tarea of tareas) {
-                // Agregar a la lista de IDs
-                const itemId = document.createElement('li');
-                itemId.textContent = tarea.id;
-                listaId.appendChild(itemId);
-
-                // Crear un checkbox para la tarea
-                const itemCheckbox = document.createElement('div');
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.checked = tarea.estado;
-                checkbox.setAttribute('data-id', tarea.id); // ID de la tarea como cadena
-
-                // Evento para marcar como realizada
-                checkbox.addEventListener('change', () => {
-                    tarea.estado = checkbox.checked;
-                    actualizarRecuento();
-                });
-
-                const label = document.createElement('label');
-                label.textContent = tarea.descripcion;
-
-                itemCheckbox.appendChild(checkbox);
-                itemCheckbox.appendChild(label);
-
-                document.getElementById("contenedorCheckbox").appendChild(itemCheckbox);
-            }
-
-            document.getElementById("contenedorId").appendChild(listaId);
-            actualizarRecuento();
-        }
-
-        // Renderizar inicialmente la lista de tareas
-        renderTareas();
-
-        // Creación de evento 'click' del botón agregar 
-        botonAgregar.addEventListener("click", () => {
-            const nuevaTarea = barraAgregar.value;
-            if (nuevaTarea.trim() === "") {
-                alert("Por favor, ingresa una tarea.");
-                return;
-            }
-            tareas.push({
-                id: Date.now() % 1000, // ID único
-                descripcion: nuevaTarea,
-                estado: false
-            });
-
-            barraAgregar.value = "";
-            renderTareas(); // Re-renderizamos la lista
-        });
-
-        botonEliminar.addEventListener("click", () => {
-            // Recogemos todos los checkboxes
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            // Filtramos las tareas que no estén marcadas para eliminar
-            tareas = tareas.filter(tarea => {
-                const checkbox = Array.from(checkboxes).find(cb => cb.getAttribute('data-id') === tarea.id.toString());
-                return !checkbox || !checkbox.checked; // Mantener las que no están marcadas
-            });
-            renderTareas(); // Re-renderizamos después de eliminar
-        });
-
-    </script>
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
